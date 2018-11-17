@@ -1,17 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Екатерина Лунева](https://up.htmlacademy.ru/javascript/16/user/241043).
-* Наставник: `Неизвестно`.
-
----
-
-_Не удаляйте и не обращайте внимание на файлы:_<br>
-_`.editorconfig`, `.eslintrc`, `.gitattributes`, `.gitignore`, `.travis.yml`, `package-lock.json`, `package.json`._
-
----
-
-### Памятка
-
+* Наставник: [Александр Махнёв](https://htmlacademy.ru/profile/id7392).
 #### 1. Зарегистрируйтесь на Гитхабе
 
 Если у вас ещё нет аккаунта на [github.com](https://github.com/join), скорее зарегистрируйтесь.
