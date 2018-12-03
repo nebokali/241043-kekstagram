@@ -1,8 +1,8 @@
 'use strict';
 
-var randomNumber = function(min, max) {
+var randomNumber = function (min, max) {
   return Math.floor(Math.random() * (max - min) + min);
-}
+};
 
 var pictures = document.querySelector('.pictures');
 
@@ -19,15 +19,6 @@ var commentText = [
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
-];
-
-var commentName = [
-  'Артем',
-  'Алексей',
-  'Анна',
-  'Борис',
-  'Валентина',
-  'Виктор'
 ];
 
 var descriptionText = [
@@ -72,8 +63,6 @@ for (var j = 0; j < 25; j++) {
 pictures.appendChild(fragment);
 
 bigPicture.classList.remove('hidden');
-
-var commentsList = bigPicture.querySelector('.social__comments');
 
 bigPicture.querySelector('img').src = photos[1].url;
 
