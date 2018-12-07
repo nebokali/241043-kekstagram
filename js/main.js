@@ -48,7 +48,7 @@ for (var i = 0; i < photos.length; i++) {
     object.querySelector('.picture__likes').textContent = likesCount;
     object.querySelector('.picture__comments').textContent = place[i].commentText;
     fragment.appendChild(object);
-  }
+  };
   fillPhotoData(photos, photoElement, likesNumber);
 }
 
