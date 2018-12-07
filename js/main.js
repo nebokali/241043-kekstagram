@@ -25,7 +25,7 @@ var commentsTotalNumber = randomNumber(6, 100);
 var avatarNumber = randomNumber(1, 6);
 var addData = function (place, object) {
   place.push(object);
-}
+};
 
 var photos = [];
 for (var j = 0; j < 25; j++) {
@@ -43,9 +43,9 @@ for (var j = 0; j < 25; j++) {
 
 for (var i = 0; i < photos.length; i++) {
   var photoElement = pictureTemplate.cloneNode(true);
-  var fillPhotoData = function (place, object, likes_count) {
+  var fillPhotoData = function (place, object, likesCount) {
     object.querySelector('.picture__img').src = place[i].url;
-    object.querySelector('.picture__likes').textContent = likes_count;
+    object.querySelector('.picture__likes').textContent = likesCount;
     object.querySelector('.picture__comments').textContent = place[i].commentText;
     fragment.appendChild(object);
   }
@@ -54,14 +54,14 @@ for (var i = 0; i < photos.length; i++) {
 
 pictures.appendChild(fragment);
 bigPicture.classList.remove('hidden');
-var fillBigPicture = function (origin, img, likes_count, comments_count, social_picture, social__caption) {
+var fillBigPicture = function (origin, img, likesCount, commentsCount, socialPicture, socialCaption) {
   bigPicture.querySelector('img').src = origin[img].url;
-  bigPicture.querySelector('.likes-count').textContent = likes_count;
-  bigPicture.querySelector('.comments-count').textContent = comments_count;
-  bigPicture.querySelector('.social__picture').src = 'img/avatar-' + social_picture + '.svg';
+  bigPicture.querySelector('.likes-count').textContent = likesCount;
+  bigPicture.querySelector('.comments-count').textContent = commentsCount;
+  bigPicture.querySelector('.social__picture').src = 'img/avatar-' + socialPicture + '.svg';
   bigPicture.querySelector('.social__text').textContent = origin[0].commentText;
-  bigPicture.querySelector('.social__caption').textContent = origin[social__caption].descriptionText;
-}
+  bigPicture.querySelector('.social__caption').textContent = origin[socialCaption].descriptionText;
+};
 fillBigPicture(photos, pictureNumber, likesNumber, commentsTotalNumber, avatarNumber, 0);
 bigPicture.querySelector('.social__comment-count').classList.add('.visually-hidden');
 bigPicture.querySelector('.comments-loader').classList.add('.visually-hidden');
