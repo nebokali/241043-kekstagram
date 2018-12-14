@@ -20,7 +20,6 @@ var descriptionText = [
   'Тестим новую камеру!'
 ];
 var likesNumber = randomNumber(15, 200);
-var commentsTotalNumber = randomNumber(6, 100);
 var avatarNumber = randomNumber(1, 6);
 var inputUploadImage = document.querySelector('.img-upload__input');
 var overlayUploadImage = document.querySelector('.img-upload__overlay');
@@ -49,7 +48,7 @@ for (var j = 0; j < 25; j++) {
   addData(photos, photo);
 }
 
-var fillPhotoData = function (place, object, likesCount) {
+var fillPhotoData = function (place, object) {
   object.querySelector('.picture__img').src = place[i].url;
   object.querySelector('.picture__likes').textContent = randomNumber(15, 200);
   object.querySelector('.picture__comments').textContent = randomNumber(6, 100);
@@ -58,7 +57,7 @@ var fillPhotoData = function (place, object, likesCount) {
 
 for (var i = 0; i < photos.length; i++) {
   var photoElement = pictureTemplate.cloneNode(true);
-  fillPhotoData(photos, photoElement, likesNumber);
+  fillPhotoData(photos, photoElement);
 }
 
 pictures.appendChild(fragment);
@@ -136,7 +135,7 @@ for (var k = 0; k < picture.length; k++) {
     if (evt.keyCode === 27) {
       closePopup(bigPicture);
     }
-  });
+  })
 };
 
 // Эффекты обработки фото
@@ -151,5 +150,5 @@ for (var l = 0; l < effectsRadio.length; l++) {
     if (imageUploadPreview.classList.contains('effects__preview--')) {
       imageUploadPreview.classList.remove('effects__preview--');
     }
-  });
+  })
 };
