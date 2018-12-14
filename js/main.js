@@ -19,7 +19,6 @@ var descriptionText = [
   'Тестим новую камеру!',
   'Тестим новую камеру!'
 ];
-var likesNumber = randomNumber(15, 200);
 var avatarNumber = randomNumber(1, 6);
 var inputUploadImage = document.querySelector('.img-upload__input');
 var overlayUploadImage = document.querySelector('.img-upload__overlay');
@@ -135,8 +134,8 @@ for (var k = 0; k < picture.length; k++) {
     if (evt.keyCode === 27) {
       closePopup(bigPicture);
     }
-  })
-};
+  });
+}
 
 // Эффекты обработки фото
 
@@ -150,5 +149,5 @@ for (var l = 0; l < effectsRadio.length; l++) {
     if (imageUploadPreview.classList.contains('effects__preview--')) {
       imageUploadPreview.classList.remove('effects__preview--');
     }
-  })
-};
+  });
+}
