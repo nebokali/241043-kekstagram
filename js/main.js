@@ -74,6 +74,8 @@ var fillBigPicture = function (img) {
 // Открытие и закрытие модальных окон
 
 var picture = document.querySelectorAll('.picture');
+var ESC_KEY = 27;
+var ENT_KEY = 13;
 
 inputUploadImage.addEventListener('change', function () {
   overlayUploadImage.classList.remove('hidden');
@@ -88,14 +90,14 @@ buttonCloseUploadImage.addEventListener('click', function () {
 });
 
 buttonCloseUploadImage.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === 13) {
+  if (evt.keyCode === ENT_KEY) {
     closePopup(overlayUploadImage);
   }
 });
 
 document.addEventListener('keydown', function (evt) {
   evt.preventDefault();
-  if (evt.keyCode === 27 && !overlayUploadImage.classList.contains('hidden')) {
+  if (evt.keyCode === ESC_KEY && !overlayUploadImage.classList.contains('hidden')) {
     closePopup(overlayUploadImage);
   }
 });
@@ -105,14 +107,14 @@ buttonCloseBigPicture.addEventListener('click', function () {
 });
 
 buttonCloseBigPicture.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === 13) {
+  if (evt.keyCode === ENT_KEY) {
     closePopup(bigPicture);
   }
 });
 
 document.addEventListener('keydown', function (evt) {
   evt.preventDefault();
-  if (evt.keyCode === 27 && !bigPicture.classList.contains('hidden')) {
+  if (evt.keyCode === ESC_KEY && !bigPicture.classList.contains('hidden')) {
     closePopup(bigPicture);
   }
 });
@@ -131,7 +133,7 @@ var showBigPicture = function (selectedPicture, pictureUrl, pictureNumber) {
 for (var k = 0; k < picture.length; k++) {
   showBigPicture(picture[k], (k + 1), k);
   bigPicture.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === 27) {
+    if (evt.keyCode === ESC_KEY) {
       closePopup(bigPicture);
     }
   });
