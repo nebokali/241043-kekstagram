@@ -96,7 +96,6 @@ buttonCloseUploadImage.addEventListener('keydown', function (evt) {
 });
 
 document.addEventListener('keydown', function (evt) {
-  evt.preventDefault();
   if (evt.keyCode === ESC_KEY && !overlayUploadImage.classList.contains('hidden')) {
     closePopup(overlayUploadImage);
   }
@@ -113,7 +112,6 @@ buttonCloseBigPicture.addEventListener('keydown', function (evt) {
 });
 
 document.addEventListener('keydown', function (evt) {
-  evt.preventDefault();
   if (evt.keyCode === ESC_KEY && !bigPicture.classList.contains('hidden')) {
     closePopup(bigPicture);
   }
@@ -159,7 +157,7 @@ for (var l = 0; l < effectsRadio.length; l++) {
 var buttonUploadSubmit = document.querySelector('#upload-submit');
 var textHashtags = document.querySelector('.text__hashtags');
 
-function validateHashtagsForm() {
+var validateHashtagsForm = function() {
   var hashtags = textHashtags.value.split(/[\s]+/);
   for (var n = 0; n < hashtags.length; n++) {
     var hashtag = hashtags[n];
