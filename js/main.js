@@ -195,4 +195,4 @@ function validateHashtagsForm() {
   }
 }
 
-buttonUploadSubmit.addEventListener('click', validateHashtagsForm());
+buttonUploadSubmit.addEventListener('click', validateHashtagsForm);
