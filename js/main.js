@@ -154,7 +154,8 @@ for (var l = 0; l < effectsRadio.length; l++) {
   });
 }
 
-//Валидация формы
+// Валидация формы
+
 var buttonUploadSubmit = document.querySelector('#upload-submit');
 var textHashtags = document.querySelector('.text__hashtags');
 
