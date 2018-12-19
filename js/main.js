@@ -157,7 +157,7 @@ for (var l = 0; l < effectsRadio.length; l++) {
 var buttonUploadSubmit = document.querySelector('#upload-submit');
 var textHashtags = document.querySelector('.text__hashtags');
 
-var validateHashtagsForm = function() {
+var validateHashtagsForm = function () {
   var hashtags = textHashtags.value.split(/[\s]+/);
   for (var n = 0; n < hashtags.length; n++) {
     var hashtag = hashtags[n];
@@ -191,6 +191,6 @@ var validateHashtagsForm = function() {
       }
     }
   }
-}
+};
 
 buttonUploadSubmit.addEventListener('click', validateHashtagsForm);
