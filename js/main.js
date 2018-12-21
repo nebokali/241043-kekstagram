@@ -236,8 +236,6 @@ pin.addEventListener('mousedown', function (evt) {
     x: evt.clientX
   };
 
-  var dragged = false;
-
   var onMouseMove = function (moveEvt) {
     moveEvt.preventDefault();
     dragged = true;
@@ -258,10 +256,9 @@ pin.addEventListener('mousedown', function (evt) {
   };
 
   var onMouseUp = function (upEvt) {
-      upEvt.preventDefault();
-
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
+    upEvt.preventDefault();
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
   };
 
   document.addEventListener('mousemove', onMouseMove);
