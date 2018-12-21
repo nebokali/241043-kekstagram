@@ -238,7 +238,6 @@ pin.addEventListener('mousedown', function (evt) {
 
   var onMouseMove = function (moveEvt) {
     moveEvt.preventDefault();
-    dragged = true;
 
     var shift = {
       x: startCoords.x - moveEvt.clientX
