@@ -211,21 +211,29 @@ var setSliderPosition = function (start) {
 
   if (effectName.value === 'none') {
     effectLevel.classList.add('hidden');
-    imageUploadPreview.style = '';
   } else {
     effectLevel.classList.remove('hidden');
   }
 
-  if (effectName.value === 'chrome') {
-    imageUploadPreview.style = 'filter: grayscale(' + depth / 100 + ');';
-  } else if (effectName.value === 'sepia') {
-    imageUploadPreview.style = 'filter: sepia(' + depth / 100 + ');';
-  } else if (effectName.value === 'marvin') {
-    imageUploadPreview.style = 'filter: invert(' + depth + '%);';
-  } else if (effectName.value === 'phobos') {
-    imageUploadPreview.style = 'filter: blur(' + (3 * depth / 100) + 'px);';
-  } else if (effectName.value === 'heat') {
-    imageUploadPreview.style = 'filter: brightness(' + (1 + 2 * depth / 100) + ');';
+  switch(effectName.value) {
+    case 'chrome':
+      imageUploadPreview.style = 'filter: grayscale(' + depth / 100 + ');';
+      break;
+    case 'sepia':
+      imageUploadPreview.style = 'filter: sepia(' + depth / 100 + ');';
+      break;
+    case 'marvin':
+      imageUploadPreview.style = 'filter: invert(' + depth + '%);';
+      break;
+    case 'phobos':
+      imageUploadPreview.style = 'filter: blur(' + (3 * depth / 100) + 'px);';
+      break;
+    case 'heat':
+      imageUploadPreview.style = 'filter: brightness(' + (1 + 2 * depth / 100) + ');';
+      break;
+    default:
+      imageUploadPreview.style = '';
+      break;
   }
 };
 
