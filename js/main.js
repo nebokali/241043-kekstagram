@@ -215,7 +215,7 @@ var setSliderPosition = function (start) {
     effectLevel.classList.remove('hidden');
   }
 
-  switch(effectName.value) {
+  switch (effectName.value) {
     case 'chrome':
       imageUploadPreview.style = 'filter: grayscale(' + depth / 100 + ');';
       break;
