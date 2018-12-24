@@ -84,7 +84,7 @@
   for (var k = 0; k < picture.length; k++) {
     showBigPicture(picture[k], (k + 1), k);
     bigPicture.addEventListener('keydown', function (evt) {
-      if (evt.keyCode === ESC_KEY) {
+      if (evt.keyCode === window.data.ESC_KEY) {
         closePopup(bigPicture);
       }
     });
