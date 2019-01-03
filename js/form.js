@@ -48,8 +48,8 @@
 
   buttonUploadSubmit.addEventListener('click', validateHashtagsForm);
 
-  var onPopupEscPress = function() {
-    upload.addEventListener ('keydown', function (evt) {
+  var onPopupEscPress = function () {
+    upload.addEventListener('keydown', function (evt) {
       if (evt.keyCode === window.data.ESC_KEY) {
         closePopup();
       }

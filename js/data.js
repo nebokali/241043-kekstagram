@@ -30,19 +30,19 @@
       return Math.floor(Math.random() * (max - min) + min);
     },
 
-    createArray: function (number) {
+    createArray: function () {
       var photos = [];
       for (var j = 0; j < 25; j++) {
         var url = 'photos/' + (j + 1) + '.jpg';
         var newDescriptionText = window.data.descriptionText;
-        var descriptionNumber = randomNumber(0, newDescriptionText.length);
+        var descriptionNumber = window.data.randomNumber(0, newDescriptionText.length);
         var newCommentText = window.data.commentText;
-        var commentsNumber = randomNumber(0, newCommentText.length);
+        var commentsNumber = window.data.randomNumber(0, newCommentText.length);
 
         photos[j] = {
           url: url,
           description: newDescriptionText[descriptionNumber],
-          likes: randomNumber(15, 200),
+          likes: window.data.randomNumber(15, 200),
           comments: newCommentText[commentsNumber]
         };
       }

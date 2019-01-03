@@ -3,10 +3,6 @@
 (function () {
   var bigPicture = document.querySelector('.big-picture');
 
-  var randomNumber = function (min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
-  };
-
   // Открытие и закрытие модальных окон
 
   var inputUploadImage = document.querySelector('.img-upload__input');
