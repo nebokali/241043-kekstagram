@@ -9,7 +9,6 @@
   var inputHash = document.querySelector('.text__hashtags');
 
   var uploadFileInput = document.querySelector('#upload-file');
-  var uploadClose = upload.querySelector('.img-upload__cancel');
 
   var validateHashtagsForm = function () {
     var hashtags = textHashtags.value.split(/[\s]+/);
@@ -50,7 +49,7 @@
   buttonUploadSubmit.addEventListener('click', validateHashtagsForm);
 
   var onPopupEscPress = function() {
-    upload.addEventListener('keydown', function (evt) {
+    upload.addEventListener ('keydown', function (evt) {
       if (evt.keyCode === window.data.ESC_KEY) {
         closePopup();
       }

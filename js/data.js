@@ -24,6 +24,40 @@
       var element = document.createElement(elementName);
       element.classList.add(className);
       return element;
+    },
+
+    randomNumber: function (min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
+    },
+
+    createArray: function (number) {
+      var photos = [];
+      for (var j = 0; j < 25; j++) {
+        var url = 'photos/' + (j + 1) + '.jpg';
+        var newDescriptionText = window.data.descriptionText;
+        var descriptionNumber = randomNumber(0, newDescriptionText.length);
+        var newCommentText = window.data.commentText;
+        var commentsNumber = randomNumber(0, newCommentText.length);
+
+        photos[j] = {
+          url: url,
+          description: newDescriptionText[descriptionNumber],
+          likes: randomNumber(15, 200),
+          comments: newCommentText[commentsNumber]
+        };
+      }
+      return photos;
+    },
+
+    fillData: function (object, template) {
+      var objectElement = template.cloneNode(true);
+      objectElement.querySelector('.picture__img').src = object.url;
+      objectElement.querySelector('.picture__likes').textContent = object.likes;
+      objectElement.querySelector('.picture__comments').textContent = object.comments.length;
+      objectElement.addEventListener('click', function () {
+        window.bigPicture.show(object);
+      });
+      return objectElement;
     }
   };
 })();

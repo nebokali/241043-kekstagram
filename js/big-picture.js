@@ -7,28 +7,12 @@
     return Math.floor(Math.random() * (max - min) + min);
   };
 
-  var avatarNumber = randomNumber(1, 6);
-
-  var fillBigPicture = function (img) {
-    bigPicture.querySelector('img').src = window.photos[img].url;
-    bigPicture.querySelector('.likes-count').textContent = randomNumber(15, 200);
-    bigPicture.querySelector('.comments-count').textContent = randomNumber(6, 100);
-    bigPicture.querySelector('.social__picture').src = 'img/avatar-' + avatarNumber + '.svg';
-    bigPicture.querySelector('.social__text').textContent = window.photos[0].commentText;
-    bigPicture.querySelector('.social__caption').textContent = window.photos[0].descriptionText;
-    bigPicture.querySelector('.social__comment-count').classList.add('.visually-hidden');
-    bigPicture.querySelector('.comments-loader').classList.add('.visually-hidden');
-  };
-
   // Открытие и закрытие модальных окон
 
   var inputUploadImage = document.querySelector('.img-upload__input');
   var overlayUploadImage = document.querySelector('.img-upload__overlay');
   var buttonCloseUploadImage = document.querySelector('.img-upload__cancel');
   var buttonCloseBigPicture = document.querySelector('.big-picture__cancel');
-  var bigPictureImage = document.querySelector('.big-picture__img img');
-
-  var picture = document.querySelectorAll('.picture');
 
   inputUploadImage.addEventListener('change', function () {
     overlayUploadImage.classList.remove('hidden');

@@ -106,7 +106,7 @@
         action();
       }
     });
-  }
+  };
 
   var closeSuccess = function () {
     document.removeEventListener('keydown', onSuccessEscPress);
@@ -153,5 +153,5 @@
       }
       document.addEventListener('keydown', onErrorEscPress);
     }
-  }
+  };
 })();
