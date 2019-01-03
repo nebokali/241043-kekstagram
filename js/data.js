@@ -13,15 +13,17 @@
 
     descriptionText: [
       'Тестим новую камеру!',
-      'Затусили с друзьями на море',
-      'Как же круто тут кормят',
-      'Отдыхаем...',
-      'Цените каждое мгновенье. Цените тех, кто рядом с вами и отгоняйте все сомненья. Не обижайте всех словами......',
-      'Вот это тачка!'
+      'Тестим новую камеру!'
     ],
 
     ESC_KEY: 27,
 
-    ENT_KEY: 13
+    ENT_KEY: 13,
+
+    addElement: function (elementName, className) {
+      var element = document.createElement(elementName);
+      element.classList.add(className);
+      return element;
+    }
   };
 })();

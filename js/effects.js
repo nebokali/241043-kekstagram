@@ -100,4 +100,58 @@
     setSliderPosition(MAX_SLIDER_LENGTH);
   });
 
+  var escPress = function (action) {
+    return (function (evt) {
+      if (evt.keyCode === window.data.ESC_KEY) {
+        action();
+      }
+    });
+  }
+
+  var closeSuccess = function () {
+    document.removeEventListener('keydown', onSuccessEscPress);
+    document.querySelector('main').removeChild(document.querySelector('main').querySelector('.success'));
+  };
+  var onSuccessEscPress = escPress(closeSuccess);
+  var templateSuccess = document.querySelector('#success')
+      .content
+      .querySelector('.success');
+
+  var closeError = function () {
+    document.removeEventListener('keydown', onErrorEscPress);
+    document.querySelector('main').removeChild(document.querySelector('main').querySelector('.error'));
+  };
+  var onErrorEscPress = escPress(closeError);
+  var templateError = document.querySelector('#error')
+      .content
+      .querySelector('.error');
+
+  window.effects = {
+    setSliderPosition: setSliderPosition,
+
+    openSuccess: function () {
+      var openedSuccessfully = templateSuccess.cloneNode(true);
+      document.querySelector('main').appendChild(openedSuccessfully);
+      var button = openedSuccessfully.querySelector('.success__button');
+
+      button.addEventListener('click', function () {
+        closeSuccess();
+      });
+
+      document.addEventListener('keydown', onSuccessEscPress);
+    },
+
+    openError: function () {
+      var openedErrorly = templateError.cloneNode(true);
+      document.querySelector('main').appendChild(openedErrorly);
+      var button = openedErrorly.querySelectorAll('.error__button');
+
+      for (var i = 0; i < button.length; i++) {
+        button[i].addEventListener('click', function () {
+          closeError();
+        });
+      }
+      document.addEventListener('keydown', onErrorEscPress);
+    }
+  }
 })();
