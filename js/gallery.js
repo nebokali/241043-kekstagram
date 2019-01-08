@@ -49,5 +49,5 @@
     });
   };
 
-  window.backend.load(successHandler, errorHandler);
+  window.backend.getPictures(successHandler, errorHandler);
 })();

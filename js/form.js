@@ -48,6 +48,15 @@
 
   buttonUploadSubmit.addEventListener('click', validateHashtagsForm);
 
+  var openPopup = function () {
+    upload.classList.remove('hidden');
+    document.addEventListener('keydown', onPopupEscPress);
+  };
+
+  uploadFileInput.addEventListener('change', function () {
+    openPopup();
+  });
+
   var onPopupEscPress = function () {
     upload.addEventListener('keydown', function (evt) {
       if (evt.keyCode === window.data.ESC_KEY) {
@@ -66,7 +75,7 @@
 
   var form = document.querySelector('.img-upload__form');
   form.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(form), function () {
+    window.backend.savePicture(new FormData(form), function () {
       form.reset();
       closePopup();
       window.effects.openSuccess();

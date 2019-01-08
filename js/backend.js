@@ -28,12 +28,12 @@
   };
 
   window.backend = {
-    load: function (onLoad, onError) {
+    getPictures: function (onLoad, onError) {
       var loadRequest = createRequest(onLoad, onError);
       loadRequest.open('GET', DATA_URL);
       loadRequest.send();
     },
-    save: function (data, onLoad, onError) {
+    savePicture: function (data, onLoad, onError) {
       var saveRequest = createRequest(onLoad, onError);
       saveRequest.open('POST', URL);
       saveRequest.send(data);
