@@ -25,6 +25,10 @@
         window.bigPicture.show(object);
       });
       return objectElement;
+    },
+
+    clean: function (object) {
+      object.innerHTML = '';
     }
   };
 })();
