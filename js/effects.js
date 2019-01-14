@@ -147,10 +147,10 @@
   scaleControlBigger.addEventListener('click', function () {
     var value = getScalePosition();
 
-    if ( (value+STEP) < MAX_VALUE) {
+    if ((value + STEP) < MAX_VALUE) {
       value += STEP;
       setScalePosition(value);
-    } else if ( (value+STEP) >= MAX_VALUE) {
+    } else if ((value + STEP) >= MAX_VALUE) {
       setScalePosition(100);
     }
   });
@@ -158,10 +158,10 @@
   scaleControlSmaller.addEventListener('click', function () {
     var value = getScalePosition();
 
-    if ( (value-STEP) > MIN_VALUE) {
+    if ((value - STEP) > MIN_VALUE) {
       value -= STEP;
       setScalePosition(value);
-    } else if ( (value-STEP) <= MAX_VALUE) {
+    } else if ((value - STEP) <= MAX_VALUE) {
       setScalePosition(25);
     }
   });
