@@ -125,5 +125,9 @@
     renderPictures(picturesNewArray);
   });
 
+  window.gallery = {
+    error: errorHandler
+  };
+
   window.backend.getPictures(successHandler, errorHandler);
 })();

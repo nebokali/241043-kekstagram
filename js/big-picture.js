@@ -2,9 +2,6 @@
 
 (function () {
   var bigPicture = document.querySelector('.big-picture');
-  var inputUploadImage = document.querySelector('.img-upload__input');
-  var overlayUploadImage = document.querySelector('.img-upload__overlay');
-  var buttonCloseUploadImage = document.querySelector('.img-upload__cancel');
   var buttonCloseBigPicture = document.querySelector('.big-picture__cancel');
   var commentsList = bigPicture.querySelector('.social__comments');
   var COMMENTS_LOAD_AMOUNT = 5;
@@ -12,29 +9,18 @@
   var commentsLeft;
   var commentsObject = {};
 
-  inputUploadImage.addEventListener('change', function () {
-    overlayUploadImage.classList.remove('hidden');
-  });
-
   var closePopup = function (modal) {
     modal.classList.add('hidden');
+    document.removeEventListener('keydown', onPopupEscPress);
   };
 
-  buttonCloseUploadImage.addEventListener('click', function () {
-    closePopup(overlayUploadImage);
-  });
-
-  buttonCloseUploadImage.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === window.data.ENT_KEY) {
-      closePopup(overlayUploadImage);
-    }
-  });
-
-  document.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === window.data.ESC_KEY && !overlayUploadImage.classList.contains('hidden')) {
-      closePopup(overlayUploadImage);
-    }
-  });
+  var onPopupEscPress = function () {
+    document.addEventListener('keydown', function (evt) {
+      if (evt.keyCode === window.data.ESC_KEY && !bigPicture.classList.contains('hidden')) {
+        closePopup(bigPicture);
+      }
+    });
+  };
 
   buttonCloseBigPicture.addEventListener('click', function () {
     closePopup(bigPicture);
@@ -42,12 +28,6 @@
 
   buttonCloseBigPicture.addEventListener('keydown', function (evt) {
     if (evt.keyCode === window.data.ENT_KEY) {
-      closePopup(bigPicture);
-    }
-  });
-
-  document.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === window.data.ESC_KEY && !bigPicture.classList.contains('hidden')) {
       closePopup(bigPicture);
     }
   });
@@ -106,6 +86,7 @@
     commentsObject.totalCommentsNumber = commentsLeft.length;
     commentsList.innerHTML = '';
     renderComments(updateComments(commentsLeft));
+    document.addEventListener('keydown', onPopupEscPress);
   };
 
   window.bigPicture = {
