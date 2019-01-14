@@ -10,10 +10,10 @@
   var inputComment = document.querySelector('.text__description');
   var uploadPreview = document.querySelector('.img-upload__preview img');
   var FILE_TYPES = [
-      'gif',
-      'jpg',
-      'jpeg',
-      'png'
+    'gif',
+    'jpg',
+    'jpeg',
+    'png'
   ];
   var buttonCloseUploadImage = document.querySelector('.img-upload__cancel');
 
