@@ -14,21 +14,6 @@
 
     randomNumber: function (min, max) {
       return Math.floor(Math.random() * (max - min) + min);
-    },
-
-    fillData: function (object, template) {
-      var objectElement = template.cloneNode(true);
-      objectElement.querySelector('.picture__img').src = object.url;
-      objectElement.querySelector('.picture__likes').textContent = object.likes;
-      objectElement.querySelector('.picture__comments').textContent = object.comments.length;
-      objectElement.addEventListener('click', function () {
-        window.bigPicture.show(object);
-      });
-      return objectElement;
-    },
-
-    clean: function (object) {
-      object.innerHTML = '';
     }
   };
 })();

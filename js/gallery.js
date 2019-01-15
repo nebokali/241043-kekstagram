@@ -98,15 +98,27 @@
 
   filters.classList.remove('img-filters--inactive');
 
+  var changeActiveButton = function (activeButton, otherButton, anotherButton) {
+    activeButton.classList.add('img-filters__button--active');
+    otherButton.classList.remove('img-filters__button--active');
+    anotherButton.classList.remove('img-filters__button--active');
+  };
+
+  var filterPopular = document.querySelector('#filter-popular');
+  var filterNew = document.querySelector('#filter-new');
+  var filterDiscussed = document.querySelector('#filter-discussed');
+
   filterPopular.addEventListener('click', function () {
     clean();
     renderPictures(picturesArray);
+    changeActiveButton(filterPopular, filterNew, filterDiscussed);
   });
 
   filterNew.addEventListener('click', function () {
     clean();
     picturesNewArray = getRandomElements(picturesArray, 10);
     renderPictures(picturesNewArray);
+    changeActiveButton(filterNew, filterPopular, filterDiscussed);
   });
 
   filterDiscussed.addEventListener('click', function () {
@@ -123,6 +135,7 @@
       }
     });
     renderPictures(picturesNewArray);
+    changeActiveButton(filterDiscussed, filterPopular, filterNew);
   });
 
   window.gallery = {
