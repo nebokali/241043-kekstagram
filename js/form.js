@@ -122,7 +122,10 @@
       upload.classList.add('hidden');
       uploadFileInput.value = '';
       scaleControlValue.value = '';
-      imageUploadPreview.style.transform = "";
+      textHashtags.value = '';
+      inputComment.value = '';
+      imageUploadPreview.style.filter = '';
+      imageUploadPreview.style.transform = '';
       document.removeEventListener('keydown', onPopupEscPress);
     }
   };

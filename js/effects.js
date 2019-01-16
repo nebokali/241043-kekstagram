@@ -40,19 +40,19 @@
 
     switch (effectName.value) {
       case 'chrome':
-        imageUploadPreview.style.filter = 'filter: grayscale(' + depth / 100 + ');';
+        imageUploadPreview.style.filter = 'grayscale(' + depth / 100 + ')';
         break;
       case 'sepia':
-        imageUploadPreview.style.filter = 'filter: sepia(' + depth / 100 + ');';
+        imageUploadPreview.style.filter = 'sepia(' + depth / 100 + ')';
         break;
       case 'marvin':
-        imageUploadPreview.style.filter = 'filter: invert(' + depth + '%);';
+        imageUploadPreview.style.filter = 'invert(' + depth + '%)';
         break;
       case 'phobos':
-        imageUploadPreview.style.filter = 'filter: blur(' + (3 * depth / 100) + 'px);';
+        imageUploadPreview.style.filter = 'blur(' + (3 * depth / 100) + 'px)';
         break;
       case 'heat':
-        imageUploadPreview.style.filter = 'filter: brightness(' + (1 + 2 * depth / 100) + ');';
+        imageUploadPreview.style.filter = 'brightness(' + (1 + 2 * depth / 100) + ')';
         break;
       default:
         imageUploadPreview.style.filter = '';
@@ -62,24 +62,19 @@
 
   pin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
-
     var startCoords = {
       x: evt.clientX
     };
 
     var onMouseMove = function (moveEvt) {
       moveEvt.preventDefault();
-
       var shift = {
         x: startCoords.x - moveEvt.clientX
       };
-
       startCoords = {
         x: moveEvt.clientX
       };
-
       var pinMove = pin.offsetLeft - shift.x;
-
       if ((pinMove > 0) && (pinMove <= MAX_SLIDER_LENGTH)) {
         setSliderPosition(pinMove);
       }
@@ -101,45 +96,6 @@
     setSliderPosition(MAX_SLIDER_LENGTH);
   });
 
-  var scaleControlSmaller = document.querySelector('.scale__control--smaller');
-  var scaleControlBigger = document.querySelector('.scale__control--bigger');
-  var scaleControlValue = document.querySelector('.scale__control--value');
-
-  var MIN_VALUE = 25;
-  var MAX_VALUE = 100;
-  var STEP = 25;
-
-  var getScalePosition = function () {
-    var value = scaleControlValue.value;
-    return parseInt(value.replace(/\D/, ''), 10);
-  };
-
-  var setScalePosition = function (value) {
-    scaleControlValue.value = value + '%';
-    imageUploadPreview.style.transform = 'scale(' + value / 100 + ' )';
-  };
-
-  scaleControlBigger.addEventListener('click', function () {
-    var value = getScalePosition();
-
-    if ((value + STEP) < MAX_VALUE) {
-      value += STEP;
-      setScalePosition(value);
-    } else if ((value + STEP) >= MAX_VALUE) {
-      setScalePosition(100);
-    }
-  });
-
-  scaleControlSmaller.addEventListener('click', function () {
-    var value = getScalePosition();
-
-    if ((value - STEP) > MIN_VALUE) {
-      value -= STEP;
-      setScalePosition(value);
-    } else if ((value - STEP) <= MAX_VALUE) {
-      setScalePosition(25);
-    }
-  });
 
   var escPress = function (action) {
     return (function (evt) {
