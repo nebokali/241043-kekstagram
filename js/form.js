@@ -31,21 +31,27 @@
         }
         if (hashtag.charAt(0) !== '#') {
           textHashtags.setCustomValidity('Хэштег должен начинаться с #');
+          textHashtags.classList.add('red-border');
           break;
         } else if ((hashtag.length === 1) && (hashtag === '#')) {
           textHashtags.setCustomValidity('Хэштег не может состоять из одного #');
+          textHashtags.classList.add('red-border');
           break;
         } else if ((hashtag.lastIndexOf('#') > 0) && (hashtag.length > 2))  {
           textHashtags.setCustomValidity('Хэштеги необходимо разделять пробелами');
+          textHashtags.classList.add('red-border');
           break;
         } else if (hashtags.length > 5) {
           textHashtags.setCustomValidity('Нельзя использовать более пяти хэштегов');
+          textHashtags.classList.add('red-border');
           break;
         } else if (hashtag.length > 20) {
           textHashtags.setCustomValidity('Максимальная длина хэштега 20 символов (знак # считается за один символ)');
+          textHashtags.classList.add('red-border');
           break;
         } else if (count > 1) {
           textHashtags.setCustomValidity('Хештеги должны быть разными и не повторяться');
+          textHashtags.classList.add('red-border');
           break;
         } else {
           textHashtags.setCustomValidity('');
@@ -58,6 +64,7 @@
     var comments = inputComment.value;
     if (comments.length > MAX_COMMENT_LENGTH) {
       inputComment.setCustomValidity('Максимальная длина комментария составляет ' + MAX_COMMENT_LENGTH + ' символов');
+      inputComment.classList.add('red-border');
     } else {
       inputComment.setCustomValidity('');
     }
