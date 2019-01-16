@@ -68,18 +68,16 @@
     pictures.appendChild(fragment);
   };
 
-  var getRandomElements = function (gallery, n) {
+  var getRandomElements = function (gallery) {
     var randomElement;
     var galleryArray = [];
     galleryArray[0] = gallery[window.data.randomNumber(0, gallery.length - 1)];
-    if (n >= 2) {
-      for (var i = 1; i < n; i++) {
+    for (var i = 1; i < 10; i++) {
+      randomElement = gallery[window.data.randomNumber(0, gallery.length - 1)];
+      while (galleryArray.indexOf(randomElement) !== -1) {
         randomElement = gallery[window.data.randomNumber(0, gallery.length - 1)];
-        while (galleryArray.indexOf(randomElement) !== -1) {
-          randomElement = gallery[window.data.randomNumber(0, gallery.length - 1)];
-        }
-        galleryArray[i] = randomElement;
       }
+      galleryArray[i] = randomElement;
     }
     return galleryArray;
   };
@@ -116,7 +114,7 @@
 
   filterNew.addEventListener('click', function () {
     clean();
-    picturesNewArray = getRandomElements(picturesArray, 10);
+    picturesNewArray = getRandomElements(picturesArray);
     renderPictures(picturesNewArray);
     changeActiveButton(filterNew, filterPopular, filterDiscussed);
   });

@@ -11,9 +11,6 @@
   var effectLevelValue = document.querySelector('.effect-level__value');
   var imageUploadPreview = document.querySelector('.img-upload__preview img');
   var MAX_SLIDER_LENGTH = 453;
-  var MIN_VALUE = 25;
-  var MAX_VALUE = 100;
-  var STEP = 25;
 
   for (var l = 0; l < effectsRadio.length; l++) {
     effectsRadio[l].addEventListener('change', function (evt) {
@@ -36,28 +33,29 @@
 
     if (effectName.value === 'none') {
       effectLevel.classList.add('hidden');
+      imageUploadPreview.style.filter = '';
     } else {
       effectLevel.classList.remove('hidden');
     }
 
     switch (effectName.value) {
       case 'chrome':
-        imageUploadPreview.style = 'filter: grayscale(' + depth / 100 + ');';
+        imageUploadPreview.style.filter = 'filter: grayscale(' + depth / 100 + ');';
         break;
       case 'sepia':
-        imageUploadPreview.style = 'filter: sepia(' + depth / 100 + ');';
+        imageUploadPreview.style.filter = 'filter: sepia(' + depth / 100 + ');';
         break;
       case 'marvin':
-        imageUploadPreview.style = 'filter: invert(' + depth + '%);';
+        imageUploadPreview.style.filter = 'filter: invert(' + depth + '%);';
         break;
       case 'phobos':
-        imageUploadPreview.style = 'filter: blur(' + (3 * depth / 100) + 'px);';
+        imageUploadPreview.style.filter = 'filter: blur(' + (3 * depth / 100) + 'px);';
         break;
       case 'heat':
-        imageUploadPreview.style = 'filter: brightness(' + (1 + 2 * depth / 100) + ');';
+        imageUploadPreview.style.filter = 'filter: brightness(' + (1 + 2 * depth / 100) + ');';
         break;
       default:
-        imageUploadPreview.style = '';
+        imageUploadPreview.style.filter = '';
         break;
     }
   };
@@ -103,36 +101,13 @@
     setSliderPosition(MAX_SLIDER_LENGTH);
   });
 
-  var escPress = function (action) {
-    return (function (evt) {
-      if (evt.keyCode === window.data.ESC_KEY) {
-        action();
-      }
-    });
-  };
-
-  var closeSuccess = function () {
-    document.removeEventListener('keydown', onSuccessEscPress);
-    document.querySelector('main').removeChild(document.querySelector('main').querySelector('.success'));
-  };
-  var onSuccessEscPress = escPress(closeSuccess);
-  var templateSuccess = document.querySelector('#success')
-      .content
-      .querySelector('.success');
-
-  var closeError = function () {
-    document.removeEventListener('keydown', onErrorEscPress);
-    document.querySelector('main').removeChild(document.querySelector('main').querySelector('.error'));
-  };
-  var onErrorEscPress = escPress(closeError);
-  var templateError = document.querySelector('#error')
-      .content
-      .querySelector('.error');
-
-
   var scaleControlSmaller = document.querySelector('.scale__control--smaller');
   var scaleControlBigger = document.querySelector('.scale__control--bigger');
   var scaleControlValue = document.querySelector('.scale__control--value');
+
+  var MIN_VALUE = 25;
+  var MAX_VALUE = 100;
+  var STEP = 25;
 
   var getScalePosition = function () {
     var value = scaleControlValue.value;
@@ -165,6 +140,32 @@
       setScalePosition(25);
     }
   });
+
+  var escPress = function (action) {
+    return (function (evt) {
+      if (evt.keyCode === window.data.ESC_KEY) {
+        action();
+      }
+    });
+  };
+
+  var closeSuccess = function () {
+    document.removeEventListener('keydown', onSuccessEscPress);
+    document.querySelector('main').removeChild(document.querySelector('main').querySelector('.success'));
+  };
+  var onSuccessEscPress = escPress(closeSuccess);
+  var templateSuccess = document.querySelector('#success')
+      .content
+      .querySelector('.success');
+
+  var closeError = function () {
+    document.removeEventListener('keydown', onErrorEscPress);
+    document.querySelector('main').removeChild(document.querySelector('main').querySelector('.error'));
+  };
+  var onErrorEscPress = escPress(closeError);
+  var templateError = document.querySelector('#error')
+      .content
+      .querySelector('.error');
 
   window.effects = {
     setSliderPosition: setSliderPosition,
