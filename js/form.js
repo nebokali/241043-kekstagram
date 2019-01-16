@@ -101,6 +101,10 @@
 
   var scaleControlValue = document.querySelector('.scale__control--value');
   var imageUploadPreview = document.querySelector('.img-upload__preview img');
+  var uploadEffects = document.querySelector('.img-upload__effects');
+  var effectName = uploadEffects.querySelector('input:checked');
+  var MAX_SLIDER_LENGTH = 453;
+
 
   var openPopup = function () {
     upload.classList.remove('hidden');
@@ -126,6 +130,9 @@
       inputComment.value = '';
       imageUploadPreview.style.filter = '';
       imageUploadPreview.style.transform = '';
+      window.effects.setSliderPosition(MAX_SLIDER_LENGTH);
+      textHashtags.classList.remove('red-border');
+      effectName.value = '';
       document.removeEventListener('keydown', onPopupEscPress);
     }
   };
