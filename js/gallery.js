@@ -102,10 +102,6 @@
     anotherButton.classList.remove('img-filters__button--active');
   };
 
-  var filterPopular = document.querySelector('#filter-popular');
-  var filterNew = document.querySelector('#filter-new');
-  var filterDiscussed = document.querySelector('#filter-discussed');
-
   filterPopular.addEventListener('click', function () {
     clean();
     renderPictures(picturesArray);

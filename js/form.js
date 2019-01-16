@@ -37,7 +37,7 @@
           textHashtags.setCustomValidity('Хэштег не может состоять из одного #');
           textHashtags.classList.add('red-border');
           break;
-        } else if ((hashtag.lastIndexOf('#') > 0) && (hashtag.length > 2))  {
+        } else if ((hashtag.lastIndexOf('#') > 0) && (hashtag.length > 2)) {
           textHashtags.setCustomValidity('Хэштеги необходимо разделять пробелами');
           textHashtags.classList.add('red-border');
           break;
