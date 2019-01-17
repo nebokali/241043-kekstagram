@@ -22,9 +22,7 @@
   };
 
   var onButtonClosePress = function () {
-    buttonCloseBigPicture.onclick = function () {
-      closePopup();
-    };
+    closePopup();
   };
 
   var onButtonCloseEntPress = function (evt) {
