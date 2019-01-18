@@ -60,24 +60,22 @@
     }
   };
 
-  var renderPictures = function (gallery) {
+  var renderPictures = window.debounce(function (gallery) {
+    clean();
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < gallery.length; i++) {
       fragment.appendChild(createElementPicture(gallery[i], pictureTemplate));
     }
     pictures.appendChild(fragment);
-  };
+  });
 
   var getRandomElements = function (gallery) {
-    var randomElement;
+    var tempGallery = gallery.slice();
     var galleryArray = [];
-    galleryArray[0] = gallery[window.data.randomNumber(0, gallery.length - 1)];
-    for (var i = 1; i < 10; i++) {
-      randomElement = gallery[window.data.randomNumber(0, gallery.length - 1)];
-      while (galleryArray.indexOf(randomElement) !== -1) {
-        randomElement = gallery[window.data.randomNumber(0, gallery.length - 1)];
-      }
-      galleryArray[i] = randomElement;
+    for (var i = 0; i < 10; i++) {
+      var index = window.data.randomNumber(0, tempGallery.length - 1);
+      galleryArray.push(tempGallery[index]);
+      tempGallery.splice(index, 1);
     }
     return galleryArray;
   };
@@ -103,20 +101,17 @@
   };
 
   filterPopular.addEventListener('click', function () {
-    clean();
     renderPictures(picturesArray);
     changeActiveButton(filterPopular, filterNew, filterDiscussed);
   });
 
   filterNew.addEventListener('click', function () {
-    clean();
     picturesNewArray = getRandomElements(picturesArray);
     renderPictures(picturesNewArray);
     changeActiveButton(filterNew, filterPopular, filterDiscussed);
   });
 
   filterDiscussed.addEventListener('click', function () {
-    clean();
     picturesNewArray = [];
     picturesNewArray = picturesArray.slice();
     picturesNewArray.sort(function (first, second) {
