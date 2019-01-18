@@ -12,6 +12,7 @@
   var closePopup = function () {
     bigPicture.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
+    buttonCloseBigPicture.removeEventListener('click', onButtonClosePress);
     buttonCloseBigPicture.removeEventListener('keydown', onButtonCloseEntPress);
   };
 
