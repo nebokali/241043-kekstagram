@@ -70,15 +70,14 @@
   });
 
   var getRandomElements = function (gallery) {
-    var randomElement;
     var galleryArray = [];
-    galleryArray[0] = gallery[window.data.randomNumber(0, gallery.length - 1)];
-    for (var i = 1; i < 10; i++) {
-      randomElement = gallery[window.data.randomNumber(0, gallery.length - 1)];
+    var length = gallery.length - 1;
+    for (var i = 0; i < 10; i++) {
+      var randomElement = gallery[window.data.randomNumber(0, length)];
       while (galleryArray.indexOf(randomElement) !== -1) {
-        randomElement = gallery[window.data.randomNumber(0, gallery.length - 1)];
+        randomElement = gallery[window.data.randomNumber(0, length)];
       }
-      galleryArray[i] = randomElement;
+      galleryArray.push(randomElement);
     }
     return galleryArray;
   };
