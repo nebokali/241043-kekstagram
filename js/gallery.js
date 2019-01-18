@@ -19,9 +19,7 @@
 
   var successHandler = function (gallery) {
     picturesArray = gallery;
-    window.debounce(function () {
-      renderPictures(gallery);
-    });
+    renderPictures(gallery);
     picturesNewArray = picturesArray.slice();
   };
 
@@ -62,13 +60,14 @@
     }
   };
 
-  var renderPictures = function (gallery) {
+  var renderPictures = window.debounce(function (gallery) {
+    clean();
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < gallery.length; i++) {
       fragment.appendChild(createElementPicture(gallery[i], pictureTemplate));
     }
     pictures.appendChild(fragment);
-  };
+  });
 
   var getRandomElements = function (gallery) {
     var randomElement;
@@ -105,20 +104,17 @@
   };
 
   filterPopular.addEventListener('click', function () {
-    clean();
     renderPictures(picturesArray);
     changeActiveButton(filterPopular, filterNew, filterDiscussed);
   });
 
   filterNew.addEventListener('click', function () {
-    clean();
     picturesNewArray = getRandomElements(picturesArray);
     renderPictures(picturesNewArray);
     changeActiveButton(filterNew, filterPopular, filterDiscussed);
   });
 
   filterDiscussed.addEventListener('click', function () {
-    clean();
     picturesNewArray = [];
     picturesNewArray = picturesArray.slice();
     picturesNewArray.sort(function (first, second) {
