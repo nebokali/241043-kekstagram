@@ -19,7 +19,9 @@
 
   var successHandler = function (gallery) {
     picturesArray = gallery;
-    renderPictures(gallery);
+    window.debounce(function () {
+      renderPictures(gallery);
+    });
     picturesNewArray = picturesArray.slice();
   };
 
