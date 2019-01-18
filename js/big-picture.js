@@ -9,28 +9,28 @@
   var commentsLeft;
   var commentsObject = {};
 
-  var closePopup = function (modal) {
-    modal.classList.add('hidden');
+  var closePopup = function () {
+    bigPicture.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
+    buttonCloseBigPicture.removeEventListener('click', onButtonClosePress);
+    buttonCloseBigPicture.removeEventListener('keydown', onButtonCloseEntPress);
   };
 
-  var onPopupEscPress = function () {
-    document.addEventListener('keydown', function (evt) {
-      if (evt.keyCode === window.data.ESC_KEY && !bigPicture.classList.contains('hidden')) {
-        closePopup(bigPicture);
-      }
-    });
-  };
-
-  buttonCloseBigPicture.addEventListener('click', function () {
-    closePopup(bigPicture);
-  });
-
-  buttonCloseBigPicture.addEventListener('keydown', function (evt) {
-    if (evt.keyCode === window.data.ENT_KEY) {
-      closePopup(bigPicture);
+  var onPopupEscPress = function (evt) {
+    if (evt.keyCode === window.data.ESC_KEY && !bigPicture.classList.contains('hidden')) {
+      closePopup();
     }
-  });
+  };
+
+  var onButtonClosePress = function () {
+    closePopup();
+  };
+
+  var onButtonCloseEntPress = function (evt) {
+    if (evt.keyCode === window.data.ENT_KEY) {
+      closePopup();
+    }
+  };
 
   var createComment = function (pictures) {
     var elementLi = window.data.addElement('li', 'social__comment');
@@ -87,6 +87,8 @@
     commentsList.innerHTML = '';
     renderComments(updateComments(commentsLeft));
     document.addEventListener('keydown', onPopupEscPress);
+    buttonCloseBigPicture.addEventListener('click', onButtonClosePress);
+    buttonCloseBigPicture.addEventListener('keydown', onButtonCloseEntPress);
   };
 
   window.bigPicture = {

@@ -68,18 +68,16 @@
     pictures.appendChild(fragment);
   };
 
-  var getRandomElements = function (gallery, n) {
+  var getRandomElements = function (gallery) {
     var randomElement;
     var galleryArray = [];
     galleryArray[0] = gallery[window.data.randomNumber(0, gallery.length - 1)];
-    if (n >= 2) {
-      for (var i = 1; i < n; i++) {
+    for (var i = 1; i < 10; i++) {
+      randomElement = gallery[window.data.randomNumber(0, gallery.length - 1)];
+      while (galleryArray.indexOf(randomElement) !== -1) {
         randomElement = gallery[window.data.randomNumber(0, gallery.length - 1)];
-        while (galleryArray.indexOf(randomElement) !== -1) {
-          randomElement = gallery[window.data.randomNumber(0, gallery.length - 1)];
-        }
-        galleryArray[i] = randomElement;
       }
+      galleryArray[i] = randomElement;
     }
     return galleryArray;
   };
@@ -98,15 +96,23 @@
 
   filters.classList.remove('img-filters--inactive');
 
+  var changeActiveButton = function (activeButton, otherButton, anotherButton) {
+    activeButton.classList.add('img-filters__button--active');
+    otherButton.classList.remove('img-filters__button--active');
+    anotherButton.classList.remove('img-filters__button--active');
+  };
+
   filterPopular.addEventListener('click', function () {
     clean();
     renderPictures(picturesArray);
+    changeActiveButton(filterPopular, filterNew, filterDiscussed);
   });
 
   filterNew.addEventListener('click', function () {
     clean();
-    picturesNewArray = getRandomElements(picturesArray, 10);
+    picturesNewArray = getRandomElements(picturesArray);
     renderPictures(picturesNewArray);
+    changeActiveButton(filterNew, filterPopular, filterDiscussed);
   });
 
   filterDiscussed.addEventListener('click', function () {
@@ -123,6 +129,7 @@
       }
     });
     renderPictures(picturesNewArray);
+    changeActiveButton(filterDiscussed, filterPopular, filterNew);
   });
 
   window.gallery = {
